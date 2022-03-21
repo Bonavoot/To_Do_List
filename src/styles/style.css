@@ -24,7 +24,6 @@ body {
   padding-left: 25px;
   grid-area: header;
   color: white;
-  background-color: rgb(24, 24, 24);
   border: rgb(0, 0, 0) 1px solid;
   font-size: 15pt;
 }
@@ -120,6 +119,7 @@ body {
 
 .list-container {
   display: flex;
+  position: relative;
   align-items: center;
   background-color: #f1f1f1;
   justify-content: space-between;
@@ -154,9 +154,23 @@ body {
   color: rgb(172, 172, 255);
 }
 
+.list-item {
+  margin-left: -250px;
+  width: 80%;
+  padding-left: 10px;
+  border: none;
+  background-color: #f1f1f1;
+  height: 80%;
+  font-size: 100%;
+}
+
 /* 
 Add Project Form  
 */
+
+label {
+  font-weight: 700;
+}
 
 .form-container {
   position: absolute;
@@ -170,6 +184,7 @@ Add Project Form
   padding-left: 10px;
   flex-direction: column;
   font-size: 24pt;
+  display: none;
 }
 
 .form-header {
