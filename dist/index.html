@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="./index.bundle.js"></script>
+    <script src="./index.bundle.js" defer></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -22,7 +23,21 @@
         <div class="left-container">
           <div class="left-title-container">
             <h2>My Lists</h2>
-            <button id="add-project">
+            <script>
+              function addProject() {
+                if (
+                  document.getElementById("form-container").style.display ==
+                  "none"
+                ) {
+                  document.getElementById("form-container").style.display =
+                    "block";
+                } else {
+                  document.getElementById("form-container").style.display =
+                    "none";
+                }
+              }
+            </script>
+            <button onclick="addProject()" id="add-project">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="28"
@@ -42,18 +57,24 @@
             </button>
           </div>
 
-          <div class="today">Today</div>
+          <div class="today">
+            Today
+            <ul id="project-name-left-today"></ul>
+          </div>
 
-          <div class="week">All Dates</div>
+          <div class="all-dates">
+            All Dates
+            <ul id="project-name-left-all-dates"></ul>
+          </div>
         </div>
       </div>
       <div class="right">
         <div class="card">
           <div class="card-header">
-            <div class="title">Example</div>
+            <div id="title">Example</div>
             <div class="right-side-card-header">
-              <div class="date">Today</div>
-              <div class="priority">Priority: High</div>
+              <div id="date">Today</div>
+              <div id="priority">Priority: High</div>
             </div>
           </div>
           <div class="card-list">
@@ -66,7 +87,6 @@
                 type="text"
                 placeholder="Click to add text"
               />
-
               <button id="list-item-delete-btn">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -109,9 +129,9 @@
             </svg>
           </button>
         </div>
-        <div class="form-container">
+        <div id="form-container" style="display: none">
           <div class="form-header">ADD PROJECT</div>
-          <form class="list-data-form" action="">
+          <form class="list-data-form">
             <div>
               <label for="title">Title</label>
               <input
@@ -119,21 +139,22 @@
                 name="title"
                 placeholder="Food Shopping"
                 required
-                type="text"
+                type=""
+                value=""
               />
             </div>
 
             <div>
               <label for="date">Date</label>
-              <input name="date" type="date" required />
+              <input name="date" type="date" id="form-date" value="" required />
             </div>
 
             <div>
               <label for="priority">Priority</label>
               <select id="priority-rank" name="priority">
-                <option value="high">High</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
               </select>
             </div>
             <div>
@@ -142,9 +163,7 @@
             </div>
             <div>
               <label for="submit-list"></label>
-              <button id="submit-list" type="submit" name="submit-list">
-                SUBMIT
-              </button>
+              <button id="submit-list" name="submit-list">SUBMIT</button>
             </div>
           </form>
         </div>
